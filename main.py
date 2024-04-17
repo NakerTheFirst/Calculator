@@ -17,32 +17,35 @@ class UI(QMainWindow):
         self.__central_widget.setStyleSheet("background-color: #04092E")
         self.setFixedSize(400, 400)
 
-        buttons = [
+        num_buttons = [
             ("7", 1, 0),
             ("8", 1, 1),
             ("9", 1, 2),
-            ("/", 1, 3),
             ("4", 2, 0),
             ("5", 2, 1),
             ("6", 2, 2),
-            ("*", 2, 3),
             ("1", 3, 0),
             ("2", 3, 1),
             ("3", 3, 2),
+            ("0", 4, 0)
+        ]
+
+        special_buttons = [
+            ("/", 1, 3),
+            ("*", 2, 3),
             ("-", 3, 3),
-            ("0", 4, 0),
-            ("C", 4, 1),
             (".", 4, 2),
+            ("C", 4, 1),
             ("+", 4, 3),
             ("=", 5, 3)
         ]
 
         # Make the buttons come to life!
-        for btn_text, row, col in buttons:
-            button = QPushButton(btn_text)
-            button.setFixedHeight(60)
-            self.__layout.addWidget(button, row, col)
-            button.setStyleSheet("background-color: #767587; border: none")
+        for btn_text, row, col in num_buttons:
+            Button(self.__layout, btn_text, row, col, "#767587")
+
+        for btn_text, row, col in special_buttons:
+            Button(self.__layout, btn_text, row, col, "#5C292B")
 
         # Make the text field come to life!
         text_field = QLabel("Lorem")

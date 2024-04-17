@@ -19,7 +19,7 @@ class UI(QMainWindow):
         self.__central_widget.setStyleSheet("background-color: #1E1E1E; color: #1E1E1E")
         self.setFixedSize(400, 400)
         self.setWindowIcon(QtGui.QIcon('icon.svg'))
-        self.text_field = QLabel("0")
+        self.text_field = QLabel()
         self.text_field.setFixedHeight(60)
         self.text_field.setStyleSheet("background-color: #F2ECFF; font: 22pt Ubuntu; padding-left: 10px")
         self.__layout.addWidget(self.text_field, 0, 0, 1, 4)
@@ -74,7 +74,7 @@ class Logic:
             if operand != 0:
                 self.current_result /= operand
             else:
-                print("Why would you do that")
+                print("Moron")
                 return None
         self.current_operation = None
         return self.current_result

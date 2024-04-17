@@ -4,7 +4,7 @@ from PyQt6 import QtGui
 
 
 class UI(QMainWindow):
-    buttonClicked = pyqtSignal(str)  # Signal to emit the button text
+    buttonClicked = pyqtSignal(str)
 
     def __init__(self):
         super().__init__()
@@ -35,11 +35,8 @@ class UI(QMainWindow):
             button.setStyleSheet("background-color: #767587; border: none; font: bold 32px Ubuntu; color: #1E1E1E")
             button.clicked.connect(lambda ch, btn_text=btn_text: self.button_clicked(btn_text))
 
-        # for btn_text, row, col in num_buttons + special_buttons:
-        #     Button(self.__layout, btn_text, row, col, "#767587", lambda text=btn_text: self.button_clicked(text))
-
     def button_clicked(self, button_text):
-        self.buttonClicked.emit(button_text)  # Emit the button click signal
+        self.buttonClicked.emit(button_text)
 
 
 class Button:
@@ -114,7 +111,7 @@ class MainApp:
             if self.__logic.current_operation:
                 result = self.__logic.calculate(float(self.__ui.text_field.text()), self.__logic.current_operation)
                 self.__ui.text_field.setText(str(result))
-                self.__logic.clear()  # Resets the operation state after calculation
+                self.__logic.clear()
         elif button_text == 'C':
             self.__logic.clear()
             self.__ui.text_field.setText('0')

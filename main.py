@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QGridLayout, QWidget, QLabel
+from PyQt6 import QtGui
 
 
 class UI(QMainWindow):
@@ -16,6 +17,7 @@ class UI(QMainWindow):
         self.__central_widget.setLayout(self.__layout)
         self.__central_widget.setStyleSheet("background-color: #04092E")
         self.setFixedSize(400, 400)
+        self.setWindowIcon(QtGui.QIcon('icon.svg'))
 
         num_buttons = [
             ("7", 1, 0),
@@ -40,14 +42,14 @@ class UI(QMainWindow):
             ("=", 5, 3)
         ]
 
-        # Make the buttons come to life!
+        # Buttons
         for btn_text, row, col in num_buttons:
             Button(self.__layout, btn_text, row, col, "#767587")
 
         for btn_text, row, col in special_buttons:
             Button(self.__layout, btn_text, row, col, "#5C292B")
 
-        # Make the text field come to life!
+        # Text field
         text_field = QLabel("Lorem")
         text_field.setFixedHeight(60)
         text_field.setStyleSheet("background-color: #AAA9BC")
@@ -65,7 +67,7 @@ class Button:
         button = QPushButton(caption)
         button.setFixedHeight(60)
         layout.addWidget(button, row, col)
-        button.setStyleSheet(f"background-color: {colour}; border: none")
+        button.setStyleSheet(f"background-color: {colour}; border: none; font: bold 32px")
 
 
 class Logic:

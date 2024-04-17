@@ -14,6 +14,7 @@ class UI(QMainWindow):
         self.setCentralWidget(self.__central_widget)
         self.__layout = QGridLayout()
         self.__central_widget.setLayout(self.__layout)
+        self.__central_widget.setStyleSheet("background-color: #04092E")
         self.setFixedSize(400, 400)
 
         buttons = [
@@ -41,16 +42,27 @@ class UI(QMainWindow):
             button = QPushButton(btn_text)
             button.setFixedHeight(60)
             self.__layout.addWidget(button, row, col)
+            button.setStyleSheet("background-color: #767587; border: none")
 
         # Make the text field come to life!
         text_field = QLabel("Lorem")
         text_field.setFixedHeight(60)
-        text_field.setStyleSheet("background-color: slategray")
+        text_field.setStyleSheet("background-color: #AAA9BC")
         self.__layout.addWidget(text_field, 0, 0, 1, 4)
 
-    def __button_clicked(self):
-        # Signal handler
-        print("Button clicked")
+
+class Button:
+    # TODO: Add a slot argument - consider doing it in Logic class
+    def __init__(self, layout, caption: str, row: int, col: int, colour: str) -> None:
+        self.caption = caption
+        self.row = row
+        self.col = col
+        self.colour = colour
+
+        button = QPushButton(caption)
+        button.setFixedHeight(60)
+        layout.addWidget(button, row, col)
+        button.setStyleSheet(f"background-color: {colour}; border: none")
 
 
 class Logic:
